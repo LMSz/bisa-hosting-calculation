@@ -7,11 +7,13 @@ import ServicesTab from './components/ServicesTab.jsx'
 import CumulativeTab from './components/CumulativeTab.jsx'
 import OpinionTab from './components/OpinionTab.jsx'
 
+const DEV_MODE = new URLSearchParams(window.location.search).get('dev') === 'bss'
+
 const TABS = [
-  { id: 'overview',    label: 'Overview' },
-  { id: 'services',    label: 'Service Breakdown' },
-  { id: 'cumulative',  label: 'Cumulative Analysis' },
-  { id: 'opinion',     label: 'Analysis & Opinion' },
+  { id: 'overview',   label: 'Overview' },
+  { id: 'services',   label: 'Service Breakdown' },
+  { id: 'cumulative', label: 'Cumulative Analysis' },
+  ...(DEV_MODE ? [{ id: 'opinion', label: 'Analysis & Opinion' }] : []),
 ]
 
 export default function App() {
